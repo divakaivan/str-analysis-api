@@ -14,7 +14,7 @@ class StrInput(BaseModel):
 
 
 class AnalysisResponse(BaseModel):
-    """Response model for `POST /v1/analysis/:type`"""
+    """Response model for `POST /v1/analyses`"""
 
     response: dict[str, str] = Field(
         description="Mapping of analysis type to that analysis result"
