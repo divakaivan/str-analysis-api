@@ -2,10 +2,10 @@ name: CI/CD
 
 on:
   push:
-    branches: [main, "release-*"]
   pull_request:
-    branches: [main, "release-*"]
-
+    branches:
+      - main
+      - 'release-*'
 
 jobs:
   lint-and-test:
@@ -57,7 +57,6 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/str-analysis-api:dev-${{ github.sha }}
           labels: |
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
-
 
   build-and-push-prod:
     needs: lint-and-test
