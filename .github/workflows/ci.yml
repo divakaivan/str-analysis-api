@@ -54,10 +54,10 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/str-analysis-api:dev
             ${{ secrets.DOCKERHUB_USERNAME }}/str-analysis-api:dev-${{ github.sha }}
           labels: |
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+
 
   build-and-push-prod:
     needs: lint-and-test
@@ -81,7 +81,6 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/str-analysis-api:prod
             ${{ secrets.DOCKERHUB_USERNAME }}/str-analysis-api:prod-${{ github.sha }}
           labels: |
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
