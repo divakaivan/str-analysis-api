@@ -2,10 +2,10 @@ name: CI/CD
 
 on:
   push:
-    branches: [main, "release-*"]
   pull_request:
-    branches: [main, "release-*"]
-
+    branches:
+      - main
+      - 'release-*'
 
 jobs:
   lint-and-test:
@@ -54,7 +54,6 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/str-analysis-api:dev
             ${{ secrets.DOCKERHUB_USERNAME }}/str-analysis-api:dev-${{ github.sha }}
           labels: |
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
@@ -81,7 +80,6 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/str-analysis-api:prod
             ${{ secrets.DOCKERHUB_USERNAME }}/str-analysis-api:prod-${{ github.sha }}
           labels: |
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
